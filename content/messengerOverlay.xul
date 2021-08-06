@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?xml-stylesheet href="chrome://exquilla/skin/messengerOverlay.css" type="text/css"?>
+
+<!DOCTYPE overlay [
+<!ENTITY % messengerOverlayDTD SYSTEM "chrome://exquilla/locale/messengerOverlay.dtd" >
+%messengerOverlayDTD;
+]>
+<!-- 
+/*
+ ***** BEGIN LICENSE BLOCK *****
+ * This file is part of ExQuilla by Mesquilla.
+ *
+ * Copyright 2010 R. Kent James. All Rights Reserved
+ *
+ * ***** END LICENSE BLOCK *****
+ */
+-->
+
+<overlay id="exquilla-overlay"
+         xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+  <script type="application/javascript" src="chrome://exquilla/content/exquilla.js"/>
+  <script type="application/javascript" src="chrome://exquilla/content/license-ui/license-ui.js"/>
+
+  <menupopup id="taskPopup">
+    <menu id='exquilla-menu' class='menu-iconic' label='&exquilla.menu;'
+          image='chrome://exquilla/skin/letter-x-icon-16.png'>
+      <menupopup>
+        <menuitem id="exquilla.openSettingsTab"
+                  oncommand="exquilla.openSettingsTab();"/>
+        <menuitem label="&exquilla.addExchangeAccount;"
+                  oncommand="exquilla.Utils.openAccountWizard();"/>
+        <menuitem label='&exquilla.openHelp;' oncommand='exquilla.openHelpTab();'/>
+        <menuitem label='&exquilla.openLog;' oncommand='exquilla.openLog();'/>
+      </menupopup>
+    </menu>
+  </menupopup>
+
+  <menupopup id="menu_NewPopup">
+    <menuitem id='exquilla-menu-NewAccount' class='menuitem-iconic' label='&exquilla.addExchangeAccount;'
+              insertbefore="newAccountMenuItem"
+              image="chrome://exquilla/skin/letter-x-icon-16.png"
+              oncommand="exquilla.Utils.openAccountWizard();"/>
+  </menupopup>
+
+  <toolbarbutton id="appmenu_exquillaMenu" insertbefore="appmenu_sanitizeHistory"
+                 class="subviewbutton subviewbutton-iconic subviewbutton-nav"
+                 image="chrome://exquilla/skin/letter-x-icon-16.png"
+                 label="&exquilla.menu;" closemenu="none"
+                 oncommand="PanelUI.showSubView('appMenu-exquillaView', this);"/>
+
+  <panelmultiview id="appMenu-multiView">
+    <panelview id="appMenu-exquillaView" title="&exquilla.menu;" class="PanelUI-subView">
+      <vbox class="panel-subview-body">
+        <toolbarbutton id="appmenu_exquilla_openSettingsTab"
+                       class="subviewbutton"
+                       oncommand="exquilla.openSettingsTab();"/>
+        <toolbarbutton id="appmenu_exquilla_addExchangeAccount"
+                       class="subviewbutton"
+                       label="&exquilla.addExchangeAccount;"
+                       oncommand="exquilla.Utils.openAccountWizard();"/>
+        <toolbarbutton id="appmenu_exquilla_openHelp"
+                       class="subviewbutton"
+                       label="&exquilla.openHelp;"
+                       oncommand="exquilla.openHelpTab();"/>
+        <toolbarbutton id="appmenu_exquilla_openLog"
+                       class="subviewbutton"
+                       label="&exquilla.openLog;"
+                       oncommand="exquilla.openLog();"/>
+      </vbox>
+    </panelview>
+  </panelmultiview>
+
+  <toolbarbutton id="appmenu_exquillaNewAccount"
+                 insertbefore="appmenu_newAccountMenuItem"
+                 class="subviewbutton subviewbutton-iconic"
+                 image="chrome://exquilla/skin/letter-x-icon-16.png"
+                 label="&exquilla.addExchangeAccount;"
+                 oncommand="exquilla.Utils.openAccountWizard();"/>
+
+</overlay>
