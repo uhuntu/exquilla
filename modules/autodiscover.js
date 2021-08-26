@@ -186,7 +186,7 @@ function doAutodiscover(aEmail, aUsername, aDomain, aPassword, aSavePassword, aL
             }
           }
 
-          if (eventListener.mCertError)
+          if (eventListener.mCertError || status == 0)
           {
             if (informUserOfCertError(url, aWindow))
             {
@@ -297,7 +297,7 @@ function informUserOfCertError(targetSite, aWindow)
                };
   // get a window and open dialog (Warning: skink dependency in native method)
   let window = aWindow || Services.ww.activeWindow;
-  window.openDialog("chrome://pippki/content/exceptionDialog.xul",
+  window.openDialog("chrome://pippki/content/exceptionDialog.xhtml",
                     "","chrome,centerscreen,modal", params);
   return params.exceptionAdded;
 }
